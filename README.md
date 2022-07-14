@@ -1,4 +1,4 @@
-## Steps to Run a Fullnode
+## Fullnode
 steps for run a full node on the binance smart chain.
 
 ##### 1.  Download the pre-build binaries from  [release page](https://github.com/bnb-chain/bsc/releases/latest)  or follow the instructions below:
@@ -49,3 +49,11 @@ tar -I lz4 xvf geth.tar.lz4
 -   Consider backing up the original data:  `mv ~/bsc_mainnet_node/geth/chaindata ~/bsc_mainnet_node/geth/chaindata_backup; mv ~/bsc_mainnet_node/geth/triecache ${BSC_DataDir}/geth/triecache_backup`
 -   Replace the data:  `mv server/data-seed/geth/chaindata ~/bsc_mainnet_node/geth/chaindata; mv server/data-seed/geth/triecache ~/bsc_mainnet_node/geth/triecache`
 -   Start the bsc client again and check the logs
+
+
+## References
+
+https://docs.bnbchain.org/docs/validator/fullnode/
+https://github.com/bnb-chain/bsc-snapshots
+https://github.com/bnb-chain/bsc/issues/545#issuecomment-971661245
+https://medium.com/@pieterc/running-a-full-node-with-geth-bsc-610085141248
