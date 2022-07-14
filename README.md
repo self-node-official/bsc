@@ -53,7 +53,7 @@ tar -I lz4 xvf geth.tar.lz4
 
 ## References
 
-https://docs.bnbchain.org/docs/validator/fullnode/
-https://github.com/bnb-chain/bsc-snapshots
-https://github.com/bnb-chain/bsc/issues/545#issuecomment-971661245
-https://medium.com/@pieterc/running-a-full-node-with-geth-bsc-610085141248
+- https://docs.bnbchain.org/docs/validator/fullnode/
+- https://github.com/bnb-chain/bsc-snapshots
+- https://github.com/bnb-chain/bsc/issues/545#issuecomment-971661245
+- https://medium.com/@pieterc/running-a-full-node-with-geth-bsc-610085141248
