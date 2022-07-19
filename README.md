@@ -44,7 +44,8 @@ aria2c -o geth.tar.lz4 -x 4 -s 12 "https://tf-dex-prod-public-snapshot-site1.s3-
 ```
 ##### 4.  Extract snapshot
 ```
-tar -I lz4 xvf geth.tar.lz4
+sudo apt install pv
+pv geth.tar.lz4 | tar -I lz4 -xv
 ```
 
 > If the following error not recognize lz4 try installing liblz4-tool with the following command
