@@ -26,7 +26,7 @@ cd ~/bsc_mainnet_node
 sudo apt install unzip
 unzip mainnet.zip
 cd ../
-./geth --datadir bsc_mainnet_node init bsc_mainnet_node/genesis.json
+./geth --datadir ~/bsc_mainnet_node/node init bsc_mainnet_node/genesis.json
 ```
 
 ##### 3.  Download snapshot
@@ -53,8 +53,9 @@ pv geth.tar.lz4 | tar -I lz4 -x
 
 ##### 5.  Replace Data
 -   First, stop the running bsc client if you have one by  `kill {pid}`, and make sure the client has shut down.
--   Consider backing up the original data:  `mv ~/bsc_mainnet_node/geth/chaindata ~/bsc_mainnet_node/geth/chaindata_backup; mv ~/bsc_mainnet_node/geth/triecache ${BSC_DataDir}/geth/triecache_backup`
--   Replace the data:  `mv server/data-seed/geth/chaindata ~/bsc_mainnet_node/geth/chaindata; mv server/data-seed/geth/triecache ~/bsc_mainnet_node/geth/triecache`
+-   Consider backing up the original data:  `mv ~/bsc_mainnet_node/node/geth/chaindata ~/bsc_mainnet_node/node/geth/chaindata_backup; mv ~/bsc_mainnet_node/node/geth/triecache ~/bsc_mainnet_node/node/geth/triecache_backup`
+
+-   Replace the data:  `mv server/data-seed/geth/chaindata ~/bsc_mainnet_node/node/geth/chaindata; mv server/data-seed/geth/triecache ~/bsc_mainnet_node/node/geth/triecache`
 -   Start the bsc client again and check the logs
 
 
