@@ -58,6 +58,12 @@ pv geth.tar.lz4 | tar -I lz4 -x
 -   Start the bsc client again and check the logs
 
 
+##### 6.  Run the node
+
+```
+/home/<your_username>/geth --config /home/<your_username>/bsc_mainnet_node/config.toml --datadir /home/<your_username>/bsc_mainnet_node --cache 100000 --rpc.allow-unprotected-txs --txlookuplimit 0  --maxpeers 100   --rpc --syncmode=full --snapshot=false --diffsync --rpcvhosts="localhost" --ws --http
+```
+
 ## References
 
 - https://docs.bnbchain.org/docs/validator/fullnode/
