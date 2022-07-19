@@ -2,12 +2,14 @@
 steps for run a full node on the binance smart chain.
 
 ##### 1.  Download the pre-build binaries from  [release page](https://github.com/bnb-chain/bsc/releases/latest)  or follow the instructions below:
+
+###### Linux
 ```
-# Linux
 wget   $(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest |grep browser_ |grep geth_linux |cut -d\" -f4)
 ```
+
+###### MacOS
 ```
-# MacOS
 wget   $(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest |grep browser_ |grep geth_mac |cut -d\" -f4)
 ```
 
@@ -16,24 +18,28 @@ wget   $(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest |gre
 wget  $(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest |grep browser_ |grep mainnet |cut -d\" -f4)  
 ```
 ```
-sudo mkdir ~/bsc_mainnet_node
+mkdir ~/bsc_mainnet_node
 mv mainnet.zip ~/bsc_mainnet_node
-cd ~/bsc_mainnet_node
-unzip mainnet.zip
 mv geth_linux geth
 chmod +x geth
-./geth --datadir node init genesis.json
+cd ~/bsc_mainnet_node
+sudo apt install unzip
+unzip mainnet.zip
+cd ../
+./geth --datadir bsc_mainnet_node init bsc_mainnet_node/genesis.json
 ```
 
 ##### 3.  Download snapshot
 Go to the  [snapshots repo](https://github.com/bnb-chain/bsc-snapshots), inside this repo you will find three links for three different snapshots, copy the links and paste them in the following command
 
 ```
+sudo apt install aria2
 aria2c -o geth.tar.lz4 -x 4 -s 12 "URL TO ASIA ENDPOINT" "URL TO EU ENDPOINT" "URL TO US ENDPOINT"
 ```
 
 >At the moment of writing 14/07/2022 the following command contains the correct links
 ```
+sudo apt install aria2
 aria2c -o geth.tar.lz4 -x 4 -s 12 "https://tf-dex-prod-public-snapshot-site1.s3-accelerate.amazonaws.com/geth-20220713.tar.lz4?AWSAccessKeyId=AKIAYINE6SBQPUZDDRRO&Signature=FR6PAcAQjWv28sfuUlWQPgp69O8%3D&Expires=1660370182" "https://tf-dex-prod-public-snapshot.s3-accelerate.amazonaws.com/geth-20220713.tar.lz4?AWSAccessKeyId=AKIAYINE6SBQPUZDDRRO&Signature=fPl3%2BQndZNePzn8fOUBGPAjL4jI%3D&Expires=1660370183" "https://tf-dex-prod-public-snapshot-site3.s3-accelerate.amazonaws.com/geth-20220713.tar.lz4?AWSAccessKeyId=AKIAYINE6SBQPUZDDRRO&Signature=D%2FEJp9M5FCH4DJGgaqIK2pLUPNY%3D&Expires=1660370183"
 ```
 ##### 4.  Extract snapshot
