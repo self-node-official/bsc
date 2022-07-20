@@ -71,6 +71,82 @@ mv server/data-seed/geth/triecache ~/bsc_mainnet_node/node/geth/triecache
 /home/<your_username>/geth --config /home/<your_username>/bsc_mainnet_node/config.toml --datadir /home/<your_username>/bsc_mainnet_node --cache 100000 --rpc.allow-unprotected-txs --txlookuplimit 0  --maxpeers 100   --rpc --syncmode=full --snapshot=false --diffsync --rpcvhosts="localhost" --ws --http
 ```
 
+### Optional Steps  
+
+**Add tmux**
+
+*   install tmux
+*   set tmux shell
+
+```plaintext
+nano ~/.tmux.conf
+```
+
+*   add these lines to the file
+
+```plaintext
+set -g default-shell "/bin/bash"
+set -g default-command "/bin/bash"
+```
+
+*   restart tmux:
+
+```plaintext
+tmux kill-server; tmux
+```
+
+**Set GETH as service**
+
+*   create a bash script:
+
+```plaintext
+nano startgeth.sh
+```
+
+*   paste this line in the script and save
+
+```plaintext
+/home/selfnode/geth --config /home/selfnode/bsc_mainnet_node/config.toml --datadir /home/selfnode/node --cache 100000 --rpc.allow-unprotected-txs --txlookuplimit 0 --maxpeers 100 --rpc --syncmode=full --snapshot=false --diffsync --rpcvhosts="localhost" --ws --http 2>> geth.log
+```
+
+*   next create the service file
+
+```plaintext
+sudo nano /lib/systemd/system/geth.service
+```
+
+* Enter the following code and save
+
+```plaintext
+[Unit]
+Description=Ethereum go client
+[Service]
+User=
+Type=simple
+WorkingDirectory=/home/
+ExecStart=/bin/bash /home//startgeth.sh
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=default.target
+```
+
+* enable the service
+
+```plaintext
+sudo systemctl enable geth
+```
+
+* start it (make sure geth isn't already running!):
+
+```plaintext
+sudo systemctl start geth
+```
+
+To check the logs you can use: `tail -F geth.log`
+
+If necessary you can stop or restart the service with `sudo systemctl stop geth` and `sudo systemctl restart geth`
+
 ## References
 
 - https://docs.bnbchain.org/docs/validator/fullnode/
