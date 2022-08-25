@@ -59,8 +59,8 @@ pv geth.tar.lz4 | tar -I lz4 -x
 ```
 rm -rf ~/bsc_mainnet_node/geth/chaindata
 rm -rf ~/bsc_mainnet_node/geth/triecache
-mv server/data-seed/geth/chaindata ~/bsc_mainnet_node/geth/chaindata
-mv server/data-seed/geth/triecache ~/bsc_mainnet_node/geth/triecache
+mv server/data-seed/geth/chaindata ~/bsc_mainnet_node/geth/node/chaindata
+mv server/data-seed/geth/triecache ~/bsc_mainnet_node/geth/node/triecache
 ```
 -   Start the bsc client again and check the logs
 
@@ -68,7 +68,7 @@ mv server/data-seed/geth/triecache ~/bsc_mainnet_node/geth/triecache
 ##### 6.  Run the node
 
 ```
-/home/<your_username>/geth --config /home/<your_username>/bsc_mainnet_node/config.toml --datadir /home/<your_username>/bsc_mainnet_node --cache 100000 --rpc.allow-unprotected-txs --txlookuplimit 0  --maxpeers 100   --rpc --syncmode=full --snapshot=false --diffsync --rpcvhosts="localhost" --ws --http
+/home/<your_username>/geth --config /home/<your_username>/bsc_mainnet_node/config.toml --datadir /home/<your_username>/bsc_mainnet_node/node --cache 100000 --rpc.allow-unprotected-txs --txlookuplimit 0  --maxpeers 100   --rpc --syncmode=full --snapshot=false --diffsync --rpcvhosts="localhost" --ws --http
 ```
 
 ### Optional Steps  
