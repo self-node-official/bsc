@@ -57,8 +57,8 @@ pv geth.tar.lz4 | tar -I lz4 -x
 
 -   Replace the data:  
 ```
-rm -rf ~/bsc_mainnet_node/geth/chaindata
-rm -rf ~/bsc_mainnet_node/geth/triecache
+rm -rf ~/bsc_mainnet_node/node/geth/chaindata
+rm -rf ~/bsc_mainnet_node/node/geth/triecache
 mv server/data-seed/geth/chaindata ~/bsc_mainnet_node/geth/node/chaindata
 mv server/data-seed/geth/triecache ~/bsc_mainnet_node/geth/node/triecache
 ```
