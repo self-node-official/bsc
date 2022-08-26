@@ -68,7 +68,7 @@ mv server/data-seed/geth/triecache ~/bsc_mainnet_node/node/geth/triecache
 ##### 6.  Run the node
 
 ```
-/home/<your_username>/geth --config /home/<your_username>/bsc_mainnet_node/config.toml --datadir /home/<your_username>/bsc_mainnet_node/node --cache 100000 --rpc.allow-unprotected-txs --txlookuplimit 0  --maxpeers 100   --rpc --syncmode=full --snapshot=false --diffsync --rpcvhosts="localhost" --ws --http
+/home/<user_name>/geth --config /home/<user_name>/bsc_mainnet_node/config.toml --datadir /home/<user_name>/bsc_mainnet_node/node --cache 100000 --rpc.allow-unprotected-txs --txlookuplimit 0  --maxpeers 100 --syncmode=full --snapshot=false --diffsync --http.vhosts=* --http.corsdomain=* --ws --http
 ```
 
 ### Optional Steps  
@@ -100,31 +100,31 @@ tmux kill-server; tmux
 *   create a bash script:
 
 ```plaintext
-nano startgeth.sh
+nano start_geth_bsc.sh
 ```
 
 *   paste this line in the script and save
 
 ```plaintext
-/home/selfnode/geth --config /home/selfnode/bsc_mainnet_node/config.toml --datadir /home/selfnode/node --cache 100000 --rpc.allow-unprotected-txs --txlookuplimit 0 --maxpeers 100 --rpc --syncmode=full --snapshot=false --diffsync --rpcvhosts="localhost" --ws --http 2>> geth.log
+/home/<user_name>/geth --config /home/<user_name>/bsc_mainnet_node/config.toml --datadir /home/<user_name>/bsc_mainnet_node/node --cache 100000 --rpc.allow-unprotected-txs --txlookuplimit 0  --maxpeers 100 --syncmode=full --snapshot=false --diffsync --http.vhosts=* --http.corsdomain=* --ws --http
 ```
 
 *   next create the service file
 
 ```plaintext
-sudo nano /lib/systemd/system/geth.service
+sudo nano /lib/systemd/system/geth.bsc.service
 ```
 
 * Enter the following code and save
 
 ```plaintext
 [Unit]
-Description=Ethereum go client
+Description=Ethereum go client for bsc
 [Service]
 User=
 Type=simple
 WorkingDirectory=/home/
-ExecStart=/bin/bash /home//startgeth.sh
+ExecStart=/bin/bash /home/<user_name>/start_geth_bsc.sh
 Restart=on-failure
 RestartSec=5
 [Install]
@@ -134,18 +134,18 @@ WantedBy=default.target
 * enable the service
 
 ```plaintext
-sudo systemctl enable geth
+sudo systemctl enable geth.bsc
 ```
 
 * start it (make sure geth isn't already running!):
 
 ```plaintext
-sudo systemctl start geth
+sudo systemctl start geth.bsc
 ```
 
 To check the logs you can use: `tail -F geth.log`
 
-If necessary you can stop or restart the service with `sudo systemctl stop geth` and `sudo systemctl restart geth`
+If necessary you can stop or restart the service with `sudo systemctl stop geth.bsc` and `sudo systemctl restart geth.bsc`
 
 ## References
 
